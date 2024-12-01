@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This document provides a technical guide for the end-to-end testing process of the `web-app/client` project.
+This document provides a technical guide for the end-to-end testing process of a web based application project.
 
 ---
 
