@@ -1,0 +1,34 @@
+name: E2E Test on master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run-e2e-tests:
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Restore Node modules from cache
+        uses: './.github/actions/install-node-modules'
+
+      - name: Run E2E tests
+        run: yarn e2e:test
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: output/__reporters__/playwright-report
+          retention-days: 7

@@ -1,0 +1,6 @@
+{
+  "watch": ["src/**/*.ts", "src/**/*.feature"],
+  "ignore": ["src/__generated/**"],
+  "ext": "ts,feature",
+  "exec": "yarn e2e:bdd:generate"
+}

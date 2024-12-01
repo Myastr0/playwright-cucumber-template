@@ -1,0 +1,52 @@
+{
+  "name": "playwright-cucumber-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Myastr0/playwright-cucumber-template",
+  "author": "Leo DUMON <dumon.leo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "prettier": "prettier --write .",
+    "lint": "eslint .",
+    "e2e:configure:chromium": "playwright install chromium",
+    "e2e:playwright:test": "playwright test --config ./src/config/index.ts",
+    "e2e:playwright:ui": "playwright test --config ./src/config/index.ts --ui",
+    "e2e:bdd:generate": "npx bddgen --config ./src/config/index.ts",
+    "e2e:bdd:generate:watch": "nodemon --config nodemon.json",
+    "e2e:test": "yarn e2e:bdd:generate && yarn e2e:playwright:test",
+    "e2e:test:ui": "run-p e2e:bdd:generate:watch e2e:playwright:ui",
+    "e2e:test:watch": "nodemon --watch src/**/*.feature --watch src/**/*.steps.{js,ts} --exec 'yarn e2e:bdd:generate && yarn e2e:playwright:test'",
+    "e2e:record": "playwright codegen",
+    "postinstall": "husky"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^10.3.1",
+    "@playwright/test": "1.44.1",
+    "lodash": "4.17.21",
+    "playwright": "1.44.1",
+    "playwright-bdd": "6.5.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/compat": "^1.2.3",
+    "@eslint/js": "^9.16.0",
+    "@eslint/markdown": "^6.2.1",
+    "@types/node": "18.17.1",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.12.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "nodemon": "^3.1.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.4.1",
+    "remark-parse": "^11.0.0",
+    "typescript": "5.1.3",
+    "typescript-eslint": "^8.16.0"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "packageManager": "yarn@1.22.22"
+}

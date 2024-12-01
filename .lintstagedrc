@@ -1,0 +1,4 @@
+{
+  "*.ts": "yarn lint",
+  "*.md": "yarn prettier"
+}

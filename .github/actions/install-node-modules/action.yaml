@@ -1,0 +1,27 @@
+name: Install Node modules
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Restore Node modules from cache
+      uses: actions/cache/restore@v4
+      id: restore-modules
+      with:
+        path: |
+          **/node_modules
+        key: node_modules-2024-12-01-${{ hashfiles('yarn.lock') }}
+        restore-keys: |
+          node_modules-2024-12-01-
+          node_modules-
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile
+
+    - name: Cache Node modules
+      if: ${{ steps.restore-modules.outputs.cache-hit != 'true' }}
+      uses: actions/cache/save@v4
+      with:
+        path: |
+          **/node_modules
+        key: node_modules-2024-12-01-${{ hashfiles('yarn.lock') }}
