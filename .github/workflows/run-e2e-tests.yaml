@@ -23,6 +23,9 @@ jobs:
       - name: Restore Node modules from cache
         uses: './.github/actions/install-node-modules'
 
+      - name: Install playwright dependencies
+        run: yarn playwright install
+
       - name: Run E2E tests
         run: yarn e2e:test
 
