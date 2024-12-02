@@ -8,7 +8,7 @@
 
 # Introduction
 
-This document serves as a comprehensive guide for setting up, running, and contributing to the end-to-end testing framework for the `web-app/client` project.
+This document serves as a comprehensive guide for setting up, running, and contributing to the end-to-end testing framework for a web-app project.
 
 > 💡 For insights into overarching testing principles, see the [Testing Principles](https://www.notion.so/tools/Testing-principles-8b1b624694f04aebaaebb4c1cec73538?pvs=4) document.
 
